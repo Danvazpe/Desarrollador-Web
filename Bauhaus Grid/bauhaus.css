@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Titillium Web;
+    box-sizing:border-box;
+}
+body {
+    background: black;
+}
+.bauhaus {
+    padding:30px;
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-columns: 1fr;
+    gap:20px;
+    text-align: center;
+}
+.bauhaus-box:nth-child(1) {
+    background:#b93e37;
+}
+.bauhaus-box:nth-child(2) {
+    background:#b93e37;
+}
+.bauhaus-box:nth-child(3) {
+    background:#2952ba;
+}
+.bauhaus-box:nth-child(4) {
+    background: #d1ac39;
+}
+.bauhaus-box:nth-child(5) {
+    background:#ffffff;
+}
+.bauhaus-box:nth-child(6) {
+    background:#ffffff;
+}
+.bauhaus-box:nth-child(7) {
+    background:#2952ba;
+}
+.bauhaus-box:nth-child(8) {
+    background: #d1ac39;
+}
+h1 {
+    font-size: 100px;
+    margin: 5%;
+}
+p {
+    margin: 5%;
+}
+
+@media all and (min-width: 768px) {
+    .bauhaus {
+        display: grid;
+        text-align: end;
+        min-height: 160vh;
+        margin-bottom: 0;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-areas:
+        "uno dos dos tres tres tres"
+        "cuatro dos dos cinco cinco cinco"
+        "cuatro dos dos cinco cinco cinco"
+        "cuatro dos dos cinco cinco cinco"
+        "cuatro dos dos seis siete ocho";
+    }
+    .bauhaus-box:nth-child(1) {
+        grid-area: uno;
+    }
+    .bauhaus-box:nth-child(2) {
+        grid-area: dos;
+    }
+    .bauhaus-box:nth-child(3) {
+        grid-area: tres;
+    }
+    .bauhaus-box:nth-child(4) {
+        grid-area: cuatro;
+    }
+    .bauhaus-box:nth-child(5) {
+        grid-area: cinco;
+    }
+    .bauhaus-box:nth-child(6) {
+        grid-area: seis;
+    }
+    .bauhaus-box:nth-child(7) {
+        grid-area: siete;
+    }
+    .bauhaus-box:nth-child(8) {
+        grid-area: ocho;
+    }
+    h1 {
+        font-size: 50px;
+    }
+ }
+
+@media (max-width: 480px) {
+    .bauhaus {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+}

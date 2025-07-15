@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class = "cuerpo">
+  <header class="main-header">
+    <nav id="nav" class="main-nav">
+      <ul class="nav-links">
+        <li><a class="link-item" href="index.html">Inicio</a></li>
+        <li><a class="link-item" href="proyectos.html">Proyectos</a></li>
+        <li><a class="link-item" href="servicios.html">Servicios</a></li>
+        <li class="marcado">Contacto</li>
+      </ul>
+    </nav>
+    <button type="button" id="button-menu" class="button-menu" aria-label="Abrir menú de navegación">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+    <main>
+<section id="contacto">
+  <h2>Contacta conmigo</h2>
+  <form id="formulario">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <div class="error-msg" id="errorNombre">El nombre es obligatorio y debe tener un formato correcto.</div>
+
+    <label for="correo">Correo electrónico:</label>
+    <input type="text" id="correo" name="correo" required>
+    <div class="error-msg" id="errorCorreo">El correo es obligatorio y debe tener un formato correcto.</div>
+
+    <label for="empresa">Empresa:</label>
+    <input type="text" id="empresa" name="empresa" required>
+    <div class="error-msg" id="errorEmpresa">La empresa es obligatoria y debe tener un formato correcto.</div>
+
+    <label for="pais">País:</label>
+    <input type="text" id="pais" name="pais" required>
+    <div class="error-msg" id="errorPais">El país es obligatorio y debe tener un formato correcto.</div>
+
+    <label for="telefono">Teléfono:</label>
+    <input type="number" id="telefono" name="telefono" required>
+    <div class="error-msg" id="errorTelefono">El teléfono es obligatorio y debe tener un formato correcto.</div>
+
+    <label for="texto">Mensaje:</label>
+    <textarea id="texto" name="texto">Escriba aquí su mensaje.</textarea>
+    
+    <input type="submit" value="Enviar" class="enviar">
+    <div class="success-msg" id="mensajeExito" style="display: none;">✅ Formulario enviado corectamente. ¡Muchas gracias!</div>
+  </form>
+</section>
+    <footer>
+        <p>© 2025</p>
+    </footer>
+    <script src="javascript/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoEmoción</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>AutoEmoción</h1>
+        <div id="informacion">
+            <section id="buscador">
+                <select name="" id="escoger">
+                    <option value="0">Seleccione marca</option>
+                    <option value="1">Koenigsegg</option>
+                    <option value="2">W Motors</option>
+                    <option value="3">Rimac</option>
+                </select>
+                <input type="text" id="buscar" placeholder="Escribe para buscar...">
+            </section>
+        </div>
+    </header>
+<main class="contenedor" id="contenedor"> <!-- Aquí se asegura que el contenedor tenga el ID correcto -->
+    <template id="plantillaTarjeta">
+        <section class="card">
+            <h2></h2><br>
+            <img src="" alt="">
+            <article class="card-body">
+              <p><span class="titular">País: </span> <span id="pais"></span></p>
+                <p><span class="titular">Velocidad máxima: </span> <span id="velocidad"></span> km/h.</p>
+                <span id="descripcion" class="desc"></span>
+            </article>
+        </section>
+    </template>
+</main>
+    <footer>
+        <p>&copy; 2025 AutoEmoción</p>
+    </footer>
+    <script src="javascript.js"></script>
+</body>
+</html>
