@@ -98,115 +98,6 @@ if (toggleButton && navWrapper) {
   });
 }
 
-//Botón contrátame
-const contrataBtn = document.getElementById('contrata');
-if (contrataBtn) {
-  contrataBtn.addEventListener('click', function() {
-    window.location.href = 'contacto.html';
-  });
-}
-
-const tarjetas = [
-    {
-        titulo: "Portfolio",
-        realizacion: "Individual",
-        tecnologia: html, css, javascript,
-        imagen: "img/portafolio.png"
-    },
-    {
-        titulo: "AutoEmoción",
-        realizacion: "Colectiva",
-        tecnologia: html, css, javascript,
-        imagen: "img/AutoEmocion.png"
-    },
-    {
-        titulo: "AutoEmoción",
-        realizacion: "Colectiva",
-        tecnologia: html, css, javascript,
-        imagen: "img/AutoEmocion.png"
-    },
-    {
-        titulo: "Calculadora",
-        realizacion: "Individual",
-        tecnologia: html, css, javascript,
-        imagen: "img/Calculadora.png"
-    },
-    {
-        titulo: "Bauhaus Grid",
-        realizacion: "Individual",
-        tecnologia: html, css,
-        imagen: "img/Bauhaus.png"
-    },
-];
-
-const contenedor = document.getElementById('portafolio');
-
-// Función para crear la tarjeta desde el template
-function crearTarjetaDesdeTemplate(titulo, realizacion, tecnologia, imagen) {
-    const plantilla = document.getElementById('plantillaTarjeta');
-    const clon = plantilla.content.cloneNode(true);
-    clon.querySelector('img').src = imagen;
-    clon.querySelector('img').alt = titulo;
-    clon.querySelector('h3').textContent = titulo;
-    clon.querySelector('#realiza').textContent = realizacion;
-    clon.querySelector('#tecno').textContent = tecnologia;
-
-    return clon;
-}
-
-// Crear tarjetas y agregarlas al contenedor
-tarjetas.forEach(tarjeta => {
-    const tarjetaElement = crearTarjetaDesdeTemplate(tarjeta.modelo, tarjeta.pais, tarjeta.velocidad, tarjeta.descripcion, tarjeta.imagen);
-    contenedor.appendChild(tarjetaElement);
-});
-
-const selectFiltro = document.getElementById('escoger');
-const inputBusqueda = document.getElementById('buscar');
-
-function filtrarTarjetas() {
-    const criterioMarca = selectFiltro.value;
-    const textoBusqueda = inputBusqueda.value.toLowerCase();
-
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(tarjeta => {
-        const marcaTarjeta = tarjeta.querySelector('h2').textContent.toLowerCase();
-        const textoTarjeta = tarjeta.textContent.toLowerCase();
-
-        // Convertir el valor del select a la marca real
-        let marcaSeleccionada = "";
-        switch(criterioMarca) {
-            case '1':
-                marcaSeleccionada = "koenigsegg";
-                break;
-            case '2':
-                marcaSeleccionada = "w motors";
-                break;
-            case '3':
-                marcaSeleccionada = "rimac";
-                break;
-        }
-
-        const cumpleMarca = (criterioMarca === '0' || marcaTarjeta.includes(marcaSeleccionada));
-        const cumpleTexto = textoTarjeta.includes(textoBusqueda);
-
-        if (cumpleMarca && cumpleTexto) {
-            tarjeta.style.display = "block";
-        } else {
-            tarjeta.style.display = "none";
-        }
-    });
-}
-
-// Escuchar cambios en el select y en el input para filtrar dinámicamente
-selectFiltro.addEventListener('change', filtrarTarjetas);
-inputBusqueda.addEventListener('input', filtrarTarjetas);
-
-// Opcional: filtrar desde el principio (por si hay valor predefinido)
-filtrarTarjetas();
-
-
-
 //Girar tarjeta con el teclado  
 document.querySelectorAll('.tarjeta').forEach(card => {
   card.addEventListener('keydown', (e) => {
@@ -217,3 +108,134 @@ document.querySelectorAll('.tarjeta').forEach(card => {
   });
 });
 
+
+//Botón contrátame
+const contrataBtn = document.getElementById('contrata');
+if (contrataBtn) {
+  contrataBtn.addEventListener('click', function() {
+    window.location.href = 'contacto.html';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  const html = "HTML5";
+  const css = "CSS3";
+  const javascript = "JavaScript";
+
+  // Tarjetas de proyectos
+  const tarjetas = [
+    {
+      titulo: "Portfolio",
+      realizacion: "Individual",
+      tecnologia: `${html}, ${css}, ${javascript}`,
+      imagen: "img/Portafolio.png"
+    },
+    {
+      titulo: "AutoEmoción",
+      realizacion: "Colectiva",
+      tecnologia: `${html}, ${css}, ${javascript}`,
+      imagen: "img/AutoEmocion.png"
+    },
+    {
+      titulo: "Calculadora",
+      realizacion: "Individual",
+      tecnologia: `${html}, ${css}, ${javascript}`,
+      imagen: "img/Calculadora.png"
+    },
+    {
+      titulo: "Bauhaus Grid",
+      realizacion: "Individual",
+      tecnologia: `${html}, ${css}`,
+      imagen: "img/Bauhaus.png"
+    }
+  ];
+
+  const contenedor = document.getElementById('proyect');
+
+  // Mapeo de tecnologías a íconos
+  const icons = {
+    "HTML5": { class: "fa-html5", colorClass: "html-icon" },
+    "CSS3": { class: "fa-css3-alt", colorClass: "css-icon" },
+    "JavaScript": { class: "fa-js", colorClass: "js-icon" }
+  };
+
+  // Función para crear la tarjeta desde el template
+  function crearTarjetaDesdeTemplate(titulo, realizacion, tecnologia, imagen) {
+    const plantilla = document.getElementById('plantillaTarjeta');
+    const clon = plantilla.content.cloneNode(true);
+
+    clon.querySelector('img').src = imagen;
+    clon.querySelector('img').alt = titulo;
+    clon.querySelector('h3').textContent = titulo;
+    clon.querySelector('[data-role="realiza"]').textContent = realizacion;
+
+    const spanTecnologia = clon.querySelector('[data-role="tecno"]');
+    const spanIcons = clon.querySelector('[data-role="icons"]');
+
+    // No mostrar texto de tecnologías, solo íconos
+    spanTecnologia.textContent = "";
+
+    // Agregar íconos según las tecnologías mencionadas
+    const tecnologias = tecnologia.split(',').map(t => t.trim());
+    tecnologias.forEach(tech => {
+      if (icons[tech]) {
+        const icon = document.createElement('i');
+        icon.classList.add('fa-brands', icons[tech].class, icons[tech].colorClass);
+        icon.setAttribute('aria-label', tech);
+        icon.setAttribute('title', tech);
+        spanIcons.appendChild(icon);
+      }
+    });
+
+    // Agregar atributo data-tecnologias en minúsculas para filtrar
+    const tarjetaElemento = clon.querySelector('.card');
+    tarjetaElemento.setAttribute('data-tecnologias', tecnologia.toLowerCase());
+
+    return clon;
+  }
+
+  // Crear tarjetas
+  tarjetas.forEach(tarjeta => {
+    const tarjetaElement = crearTarjetaDesdeTemplate(
+      tarjeta.titulo,
+      tarjeta.realizacion,
+      tarjeta.tecnologia,
+      tarjeta.imagen
+    );
+    contenedor.appendChild(tarjetaElement);
+  });
+
+  // Filtrado
+  const selectFiltro = document.getElementById('escoger');
+  const inputBusqueda = document.getElementById('buscar');
+
+  function filtrarTarjetas() {
+    const criterioMarca = selectFiltro.value;
+    const textoBusqueda = inputBusqueda.value.toLowerCase();
+    const cards = document.querySelectorAll('.card');
+
+    let marcaSeleccionada = "";
+    switch (criterioMarca) {
+      case '1': marcaSeleccionada = html.toLowerCase(); break;
+      case '2': marcaSeleccionada = css.toLowerCase(); break;
+      case '3': marcaSeleccionada = javascript.toLowerCase(); break;
+    }
+
+    cards.forEach(tarjeta => {
+      const tecnologiasTarjeta = tarjeta.getAttribute('data-tecnologias') || "";
+      const textoTarjeta = tarjeta.textContent.toLowerCase();
+
+      const cumpleMarca = (criterioMarca === '0' || tecnologiasTarjeta.includes(marcaSeleccionada));
+      const cumpleTexto = textoTarjeta.includes(textoBusqueda);
+
+      tarjeta.style.display = (cumpleMarca && cumpleTexto) ? "block" : "none";
+    });
+  }
+
+  selectFiltro.addEventListener('change', filtrarTarjetas);
+  inputBusqueda.addEventListener('input', filtrarTarjetas);
+
+  filtrarTarjetas();
+
+});
