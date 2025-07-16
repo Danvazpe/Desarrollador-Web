@@ -22,10 +22,20 @@
       <span></span><span></span><span></span>
     </button>
   </header>
-
+<main class="portfolio" id="portfolio">
+    <section id="sobre"><div><h2>Sobre mí</h2>
+        <img src="img/Perfil.jpg" alt="Foto de perfil">
+        </div>
+        <div>
+        <p>He recibido una formación de calidad para ser desarrollador web. Soy especialista en varios lenguajes informáticos. También soy capaz de programar aplicaciones y desarrollar videojuegos</p>
+        <p>Además, he sido educado en el campo de las Humanidades. Disfruto de la música, de las artes y de la lectura.</p>
+        </div>
+    </section>
+</main>
+<aside>
   <!-- Filtro y búsqueda -->
   <section class="filtros">
-    <h2>Proyectos:</h2>
+    <h2>Mis proyectos:</h2>
     <label for="escoger"></label>
     <select id="escoger">
       <option value="0">Seleccione una tecnología</option>
@@ -38,22 +48,22 @@
   </section>
 
   <!-- Contenedor de tarjetas -->
-  <main class="proyect" id="proyect"></main>
+  <section class="proyect" id="proyect">
 
   <!-- Template para tarjetas -->
   <template id="plantillaTarjeta">
-    <section class="card tarjeta" tabindex="0">
-      <div class="card-front">
-        <img src="" alt="">
+    <article class="card tarjeta" tabindex="0">
         <h3></h3>
+        <img src="" alt="">
         <p>
           <span data-role="tecno"></span>
           <span data-role="icons"></span>
         </p>
         <p><strong>Realización:</strong> <span data-role="realiza"></span></p>
-      </div>
-    </section>
+    </article>
   </template>
+  </section>
+  </aside>
 
   <footer>
     <p>© 2025</p>

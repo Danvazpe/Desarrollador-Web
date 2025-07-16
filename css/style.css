@@ -329,7 +329,7 @@ label {
 h3 {
   text-align: center;
   margin: 10px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .tarjeta-inner {
@@ -399,18 +399,23 @@ h3 {
     border-radius: 8px;
     padding: 15px;
     margin: 10px;
-    width: 400px;
+    width: fit-content;
+    height: fit-content;
     text-align: start;
 }
 
 .card p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 18px;
     display: flex;
     flex-direction: row;
     white-space: nowrap; /* Evita el salto de línea */
     overflow: hidden;    /* Opcional: evita que el texto se desborde */
     text-overflow: ellipsis; /* Opcional: agrega "..." si el texto es demasiado largo */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }
 
 .titular {
@@ -439,6 +444,30 @@ h3 {
   margin-right: 0.5rem;
   font-size: 1.2rem;
 }
+
+#sobre {
+    border: 1px green solid;
+    margin:50px 0 0;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#sobre p {
+    margin: 10px;
+    text-align: start;
+    font-size: 20px;
+}
+
+#escoger, #buscar {
+  max-width: 220px;
+  font-size: 18px;
+  margin: 0 5px 5px;
+}
+
+aside h2 {
+  margin:15px;
+}
+
 
 @media screen and (min-width: 768px) {
   .button-menu {
@@ -533,6 +562,33 @@ h3 {
 
 .tarjeta .back {
   font-size: 25px;
+}
+
+    #sobre {
+        display: flex;
+    }
+
+    #sobre p {
+        margin:15px;
+        font-size: 20px;
+    }
+
+    #sobre div {
+        display: inline-block;
+        width: calc(90%/2);
+        margin: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    h2 {
+        font-size: 30px;
+        margin:10px;
+    }
+
+  #escoger, #buscar {
+    max-width: 400px;
+    font-size: 18px;
 }
 
 }
