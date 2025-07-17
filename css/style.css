@@ -529,8 +529,9 @@ aside h2 {
     padding: 14px;
 }
 
-#h2 {
-  margin: 0px;
+
+.contenido {
+  margin: 40px;
 }
 
 #servicio {
@@ -589,6 +590,10 @@ h3 {
   #escoger, #buscar {
     max-width: 400px;
     font-size: 18px;
+}
+
+.trabajo {
+  margin: 30px;
 }
 
 }
