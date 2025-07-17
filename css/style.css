@@ -592,6 +592,13 @@ h3 {
     font-size: 18px;
 }
 
+#project {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid: 2px;
+}
+
 .trabajo {
   margin: 30px;
 }

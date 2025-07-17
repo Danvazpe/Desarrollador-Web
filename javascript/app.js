@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ];
 
-  const contenedor = document.getElementById('proyect');
+  const contenedor = document.getElementById('project');
 
   // Mapeo de tecnologías a íconos
   const icons = {
