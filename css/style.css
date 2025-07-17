@@ -468,6 +468,9 @@ aside h2 {
   margin:15px;
 }
 
+aside {
+  margin-top: 5px;
+}
 
 @media screen and (min-width: 768px) {
   .button-menu {
@@ -602,6 +605,13 @@ h3 {
 .trabajo {
   margin: 30px;
 }
+
+.filtrando {
+  display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
 
 }
 
