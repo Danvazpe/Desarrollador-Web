@@ -126,12 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // Tarjetas de proyectos
   const tarjetas = [
     {
-      titulo: "Portfolio",
-      realizacion: "Individual",
-      tecnologia: `${html}, ${css}, ${javascript}`,
-      imagen: "img/Portafolio.png"
-    },
-    {
       titulo: "AutoEmoción",
       realizacion: "Colectiva",
       tecnologia: `${html}, ${css}, ${javascript}`,
