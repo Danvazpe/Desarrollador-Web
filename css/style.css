@@ -223,7 +223,6 @@ label {
   color: #555;
 }
 
-/* Estilos base para inputs, textarea y selects */
 input[type="text"],
 input[type="number"],
 textarea,
@@ -236,18 +235,15 @@ select {
   transition: border-color 0.3s;
 }
 
-/* Evita estilo verde en campos opcionales */
 input:optional:valid {
   border-color: #ccc;
 }
 
-/* Verde solo para campos requeridos y válidos */
 input:required:valid,
 select:required:valid {
   border-color: #28a745;
 }
 
-/* Error en inputs dentro de #formulario */
 #formulario input.error {
   border-color: #dc3545;
 }
@@ -257,6 +253,7 @@ select:required:valid {
       background-color: black;
       color: whitesmoke;
       padding: 12px;
+        font-size: 20px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
@@ -268,12 +265,11 @@ select:required:valid {
       padding: 14px;
     }
 
-/* Estilos para mensajes generados dinámicamente */
 .error-msg {
   color: #dc3545;
   font-size: 0.9em;
   margin-top: 4px;
-  margin-bottom: 12px; /* agrega espacio extra debajo */
+  margin-bottom: 12px; 
 }
 .success-msg {
   color: green;
@@ -298,7 +294,7 @@ select:required:valid {
       padding: 15px;
       margin: 10px;
       width: 300px;
-      height: 300px;
+      height: 350px;
       text-align: start;
     }
 
@@ -366,7 +362,9 @@ h3 {
     justify-content: space-between;
     text-align: start;
     box-shadow: 0 5px 10px #000;
+    font-size: 22px;
 }
+
 
 .tarjeta .back .link {
     border-top: solid 1px #f3f3f3;
@@ -560,9 +558,7 @@ h3 {
   font-size: 200px;
 }
 
-.tarjeta .back {
-  font-size: 25px;
-}
+
 
     #sobre {
         display: flex;
