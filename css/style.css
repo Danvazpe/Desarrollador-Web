@@ -145,7 +145,7 @@ body#mainbody {
   color: whitesmoke;
   text-align: center;
   z-index: 1000;
-  font-size: 12px;
+  font-size: 20px;
   padding: 0;
 }
 
@@ -154,10 +154,16 @@ body#mainbody {
   flex-direction: column;
 }
 
-h1, #inicio p {
+h1 {
   text-align: center;
-  font-size: 20px;
+  font-size: 55px;
   margin: 10px;
+}
+
+#inicio p {
+  text-align: center;
+  font-size: 45px;
+    margin: 10px;
 }
 
 #contrata {
@@ -165,7 +171,7 @@ h1, #inicio p {
   border-radius: 4px;
   border: none;
   padding: 5px;
-  font-size: 20px;
+  font-size: 30px;
   cursor: pointer;
   transition: background 0.3s ease;
   text-align: center;
@@ -291,7 +297,7 @@ label {
       border-radius: 8px;
       padding: 15px;
       margin: 10px;
-      width: 600px;
+      width: 300px;
       height: 300px;
       text-align: start;
     }
@@ -315,13 +321,6 @@ label {
       color: yellow;
     }
 
-  .tarjeta {
-  position: relative;
-  width: 200px;
-  height: 350px;
-  perspective: 1000px;
-  display: flex;
-}
 
 h3 {
   text-align: center;
@@ -469,7 +468,7 @@ aside {
   margin-top: 5px;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .button-menu {
     display: none;
   }
@@ -519,7 +518,7 @@ aside {
   }
 
 #contrata {
-    font-size: 30px;
+    font-size: 35px;
     padding: 10px;
     margin: 20px;
 }
