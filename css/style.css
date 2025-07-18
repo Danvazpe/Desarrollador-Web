@@ -158,12 +158,14 @@ h1 {
   text-align: center;
   font-size: 55px;
   margin: 10px;
+    font-family: 'Black Ops One';
 }
 
 #inicio p {
   text-align: center;
   font-size: 45px;
     margin: 10px;
+      font-family: 'Black Ops One';
 }
 
 #contrata {
@@ -201,23 +203,19 @@ h1 {
   background: whitesmoke;
   padding: 20px;
 }
-
 #contacto {
   display: flex;
   flex-direction: column;
 }
-
 h2 {
   margin: 40px 0;
   font-size: 40px;
 }
-
 #formulario {
-    display: flex;
+  display: flex;
   flex-direction: column;
   align-items: start;
 }
-
 label {
   display: block;
   margin-bottom: 5px;
@@ -225,43 +223,36 @@ label {
   color: #555;
 }
 
-    input[type="text"],
-    input[type="number"],
-    textarea,
-    select {
-      width: 90%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      transition: border-color 0.3s;
-    }
+/* Estilos base para inputs, textarea y selects */
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s;
+}
 
-    input:valid,
-    select:valid {
-      border-color: #28a745;
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 16px;
-    }
+/* Evita estilo verde en campos opcionales */
+input:optional:valid {
+  border-color: #ccc;
+}
 
-    .error {
-      border-color: #dc3545 !important;
-    }
+/* Verde solo para campos requeridos y válidos */
+input:required:valid,
+select:required:valid {
+  border-color: #28a745;
+}
 
-    .error-msg {
-      color: #dc3545;
-      font-size: 0.9em;
-      margin-top: -8px;
-      margin-bottom: 10px;
-      display: none;
-    }
+/* Error en inputs dentro de #formulario */
+#formulario input.error {
+  border-color: #dc3545;
+}
 
-    .error-msg.visible {
-      display: block;
-    }
-
-    input[type="submit"] {
+    #botonenviar {
       width: 90%;
       background-color: black;
       color: whitesmoke;
@@ -272,17 +263,26 @@ label {
       font-weight: bold;
     }
 
-    input[type="submit"]:hover {
+    #botonenviar:hover {
       background-color: rgb(97, 97, 97);
       padding: 14px;
     }
 
-    .success-msg {
-      text-align: center;
-      color: green;
-      font-weight: 500;
-      margin-top: 10px;
-    }
+/* Estilos para mensajes generados dinámicamente */
+.error-msg {
+  color: #dc3545;
+  font-size: 0.9em;
+  margin-top: 4px;
+  margin-bottom: 12px; /* agrega espacio extra debajo */
+}
+.success-msg {
+  color: green;
+  font-weight: 500;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 
     #servicio {
       display: flex;
@@ -405,9 +405,9 @@ h3 {
     font-size: 18px;
     display: flex;
     flex-direction: row;
-    white-space: nowrap; /* Evita el salto de línea */
-    overflow: hidden;    /* Opcional: evita que el texto se desborde */
-    text-overflow: ellipsis; /* Opcional: agrega "..." si el texto es demasiado largo */
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis; 
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -542,6 +542,7 @@ aside {
 
   .tarjeta {
   width: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;

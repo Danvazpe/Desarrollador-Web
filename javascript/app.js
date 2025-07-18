@@ -1,83 +1,71 @@
-const formulario = document.getElementById('formulario');
-const inputs = document.querySelectorAll('#formulario input');
-
-if (formulario) {
+document.addEventListener('DOMContentLoaded', () => {
+  const formulario = document.getElementById('formulario');
+  const campos = {
+    nombre: false,
+    correo: false,
+    telefono: false,
+    pais: false
+  };
+  
   const expresiones = {
     nombre: /^[a-zñçA-ZÑÇÀ-ÿ\s]{1,60}$/,
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
     telefono: /^\d{7,14}$/,
-    pais: /^[a-zñçA-ZÑÇÀ-ÿ\s]{1,60}$/   
+    pais: /^[a-zñçA-ZÑÇÀ-ÿ\s]{1,60}$/
   };
 
-  const campos = {
-    nombre: false,
-    correo: false,
-    empresa: false,
-    telefono: false,
-    pais: false
-  };
-
-  const validarFormulario = (e) => {
-    switch (e.target.name) {
-      case "nombre":
-        validarCampo(expresiones.nombre, e.target, 'nombre');
-        break;
-      case "correo":
-        validarCampo(expresiones.correo, e.target, 'correo');
-        break;
-      case "empresa":
-        validarCampo(expresiones.empresa, e.target, 'empresa');
-        break;
-      case "telefono":
-        validarCampo(expresiones.telefono, e.target, 'telefono');
-        break;
-      case "pais":
-        validarCampo(expresiones.pais, e.target, 'pais');
-        break;  
+  const crearOMostrarMensaje = (input, texto) => {
+    let msg = input.nextElementSibling;
+    if (!msg || !msg.classList.contains('error-msg')) {
+      msg = document.createElement('div');
+      msg.classList.add('error-msg');
+      input.insertAdjacentElement('afterend', msg);
     }
+    msg.textContent = texto;
+    msg.style.display = 'block';
   };
 
-  const validarCampo = (expresion, input, campo) => {
-    const errorMsg = document.getElementById(`error${campo.charAt(0).toUpperCase() + campo.slice(1)}`);
-    const esValido = expresion.test(input.value.trim());
-
-    if (esValido) {
+  const validarCampo = (exp, input, nombreCampo) => {
+    const valor = input.value.trim();
+    if (exp.test(valor)) {
       input.classList.remove('error');
-      errorMsg.classList.remove('visible');
-      campos[campo] = true;
+      if (input.nextElementSibling?.classList.contains('error-msg')) {
+        input.nextElementSibling.remove();
+      }
+      campos[nombreCampo] = true;
     } else {
       input.classList.add('error');
-      errorMsg.classList.add('visible');
-      campos[campo] = false;
+      crearOMostrarMensaje(input, `El campo ${nombreCampo} no es válido.`);
+      campos[nombreCampo] = false;
     }
   };
 
-  inputs.forEach((input) => {
-    input.addEventListener('keyup', validarFormulario);
-    input.addEventListener('blur', validarFormulario);
-  });
-
-  formulario.addEventListener('submit', (e) => {
+  formulario.addEventListener('submit', e => {
     e.preventDefault();
+    Object.keys(expresiones).forEach(campo => {
+      const input = formulario[campo];
+      validarCampo(expresiones[campo], input, campo);
+    });
 
-    if (campos.nombre && campos.correo && campos.empresa && campos.telefono && campos.pais){
-      validarCampo(expresiones.nombre, formulario.nombre, 'nombre');
-      validarCampo(expresiones.correo, formulario.correo, 'correo');
-      validarCampo(expresiones.empresa, formulario.empresa, 'empresa');
-      validarCampo(expresiones.telefono, formulario.telefono, 'telefono');
-      validarCampo(expresiones.pais, formulario.pais, 'pais');
-
-      const mensajeExito = document.getElementById('mensajeExito');
-
-      mensajeExito.style.display = 'block';
+    if (Object.values(campos).every(v => v)) {
+      document.getElementById('mensajeExito').style.display = 'block';
       formulario.reset();
-      Object.keys(campos).forEach(c => campos[c] = false);
-      setTimeout(() => mensajeExito.style.display = 'none', 6000);
-    } else {
-      mensajeExito.style.display = 'none';
+      Object.keys(campos).forEach(k => campos[k] = false);
+      setTimeout(() => {
+        document.getElementById('mensajeExito').style.display = 'none';
+      }, 6000);
     }
   });
-}
+
+  formulario.querySelectorAll('input, textarea, select').forEach(input => {
+    input.addEventListener('blur', () => {
+      if (expresiones[input.name]) {
+        validarCampo(expresiones[input.name], input, input.name);
+      }
+    });
+  });
+});
+
 
 // Menú hamburguesa
 const toggleButton = document.getElementById('button-menu');

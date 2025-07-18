@@ -41,32 +41,30 @@
     <main class="contenido">
 <h2>Contacta conmigo</h2>
 <section id="contacto">
-  <form id="formulario">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
-    <div class="error-msg" id="errorNombre">El nombre es obligatorio y debe tener un formato correcto.</div>
+<form id="formulario">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required>
 
-    <label for="correo">Correo electrónico:</label>
-    <input type="text" id="correo" name="correo" required>
-    <div class="error-msg" id="errorCorreo">El correo es obligatorio y debe tener un formato correcto.</div>
+  <!-- se eliminan los divs de error predefinidos -->
 
-    <label for="empresa">Empresa:</label>
-    <input type="text" id="empresa" name="empresa" required>
+  <label for="correo">Correo:</label>
+  <input type="text" id="correo" name="correo" required>
 
-    <label for="pais">País:</label>
-    <input type="text" id="pais" name="pais" required>
-    <div class="error-msg" id="errorPais">El país es obligatorio y debe tener un formato correcto.</div>
+  <label for="empresa">Empresa:</label>
+  <input type="text" id="empresa" name="empresa">
 
-    <label for="telefono">Teléfono:</label>
-    <input type="number" id="telefono" name="telefono" required>
-    <div class="error-msg" id="errorTelefono">El teléfono es obligatorio y debe tener un formato correcto.</div>
+  <label for="pais">País:</label>
+  <input type="text" id="pais" name="pais" required>
 
-    <label for="texto">Mensaje:</label>
-    <textarea id="texto" name="texto">Escriba aquí su mensaje.</textarea>
-    
-    <input type="submit" value="Enviar" class="enviar">
-    <div class="success-msg" id="mensajeExito" style="display: none;">✅ Formulario enviado corectamente. ¡Muchas gracias!</div>
-  </form>
+  <label for="telefono">Teléfono:</label>
+  <input type="number" id="telefono" name="telefono" required>
+
+  <label for="texto">Mensaje:</label>
+  <textarea id="texto" name="texto"></textarea>
+
+  <input id="botonenviar" type="submit" value="Enviar" class="enviar">
+  <!-- mensaje de éxito generado desde JS -->
+</form>
 </section>
 </main>
     <footer>
