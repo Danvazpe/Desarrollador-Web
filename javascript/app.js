@@ -25,6 +25,9 @@ if (formulario) {
       case "correo":
         validarCampo(expresiones.correo, e.target, 'correo');
         break;
+      case "empresa":
+        validarCampo(expresiones.empresa, e.target, 'empresa');
+        break;
       case "telefono":
         validarCampo(expresiones.telefono, e.target, 'telefono');
         break;
@@ -57,9 +60,10 @@ if (formulario) {
   formulario.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    if (campos.nombre && campos.correo && campos.telefono && campos.pais){
+    if (campos.nombre && campos.correo && campos.empresa && campos.telefono && campos.pais){
       validarCampo(expresiones.nombre, formulario.nombre, 'nombre');
       validarCampo(expresiones.correo, formulario.correo, 'correo');
+      validarCampo(expresiones.empresa, formulario.empresa, 'empresa');
       validarCampo(expresiones.telefono, formulario.telefono, 'telefono');
       validarCampo(expresiones.pais, formulario.pais, 'pais');
 
