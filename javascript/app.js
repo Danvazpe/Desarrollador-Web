@@ -105,7 +105,6 @@ if (contrataBtn) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-
   const html = "HTML5";
   const css = "CSS3";
   const javascript = "JavaScript";
@@ -116,101 +115,105 @@ document.addEventListener('DOMContentLoaded', () => {
       titulo: "AutoEmoción",
       realizacion: "Colectiva",
       tecnologia: `${html}, ${css}, ${javascript}`,
-      imagen: "img/AutoEmocion.png"
+      imagen: "img/AutoEmocion.png",
+      url: "urlproyecto" // Reemplaza por tu URL
     },
     {
       titulo: "Calculadora",
       realizacion: "Individual",
       tecnologia: `${html}, ${css}, ${javascript}`,
-      imagen: "img/Calculadora.png"
+      imagen: "img/Calculadora.png",
+      url: "urlproyecto" 
     },
     {
       titulo: "Bauhaus Grid",
       realizacion: "Individual",
       tecnologia: `${html}, ${css}`,
-      imagen: "img/Bauhaus.png"
+      imagen: "img/Bauhaus.png",
+      url: "urlproyecto" 
     }
   ];
 
   const contenedor = document.getElementById('project');
 
-  // Mapeo de tecnologías a íconos
   const icons = {
     "HTML5": { class: "fa-html5", colorClass: "html-icon" },
     "CSS3": { class: "fa-css3-alt", colorClass: "css-icon" },
     "JavaScript": { class: "fa-js", colorClass: "js-icon" }
   };
 
-  // Función para crear la tarjeta desde el template
-  function crearTarjetaDesdeTemplate(titulo, realizacion, tecnologia, imagen) {
+  function crearTarjetaDesdeTemplate(titulo, realizacion, tecnologia, imagen, url) {
     const plantilla = document.getElementById('plantillaTarjeta');
     const clon = plantilla.content.cloneNode(true);
 
-    clon.querySelector('img').src = imagen;
-    clon.querySelector('img').alt = titulo;
+    const img = clon.querySelector('img');
+    img.src = imagen;
+    img.alt = titulo;
+
     clon.querySelector('h3').textContent = titulo;
     clon.querySelector('[data-role="realiza"]').textContent = realizacion;
 
     const spanTecnologia = clon.querySelector('[data-role="tecno"]');
     const spanIcons = clon.querySelector('[data-role="icons"]');
-
-    // No mostrar texto de tecnologías, solo íconos
     spanTecnologia.textContent = "";
 
-    // Agregar íconos según las tecnologías mencionadas
-    const tecnologias = tecnologia.split(',').map(t => t.trim());
-    tecnologias.forEach(tech => {
-      if (icons[tech]) {
-        const icon = document.createElement('i');
-        icon.classList.add('fa-brands', icons[tech].class, icons[tech].colorClass);
-        icon.setAttribute('aria-label', tech);
-        icon.setAttribute('title', tech);
-        spanIcons.appendChild(icon);
-      }
-    });
+    tecnologia.split(',').map(t => t.trim())
+      .forEach(tech => {
+        if (icons[tech]) {
+          const icon = document.createElement('i');
+          icon.classList.add('fa-brands', icons[tech].class, icons[tech].colorClass);
+          icon.setAttribute('aria-label', tech);
+          icon.setAttribute('title', tech);
+          spanIcons.appendChild(icon);
+        }
+      });
 
-    // Agregar atributo data-tecnologias en minúsculas para filtrar
-    const tarjetaElemento = clon.querySelector('.card');
-    tarjetaElemento.setAttribute('data-tecnologias', tecnologia.toLowerCase());
+    const card = clon.querySelector('.card');
+
+    // Crear contenedor para el botón centrado
+    const btnWrap = document.createElement('div');
+    btnWrap.classList.add('btn-container');
+
+    const enlace = document.createElement('a');
+    enlace.href = url;
+    enlace.target = "_blank";
+    enlace.classList.add('boton-proyecto');
+    enlace.textContent = "Ver proyecto";
+
+    btnWrap.appendChild(enlace);
+    card.appendChild(btnWrap);
+
+    card.setAttribute('data-tecnologias', tecnologia.toLowerCase());
 
     return clon;
   }
 
-  // Crear tarjetas
-  tarjetas.forEach(tarjeta => {
-    const tarjetaElement = crearTarjetaDesdeTemplate(
-      tarjeta.titulo,
-      tarjeta.realizacion,
-      tarjeta.tecnologia,
-      tarjeta.imagen
+  tarjetas.forEach(t => {
+    const tarjetaEl = crearTarjetaDesdeTemplate(
+      t.titulo, t.realizacion, t.tecnologia, t.imagen, t.url
     );
-    contenedor.appendChild(tarjetaElement);
+    contenedor.appendChild(tarjetaEl);
   });
 
-  // Filtrado
   const selectFiltro = document.getElementById('escoger');
   const inputBusqueda = document.getElementById('buscar');
 
   function filtrarTarjetas() {
-    const criterioMarca = selectFiltro.value;
-    const textoBusqueda = inputBusqueda.value.toLowerCase();
+    const criterio = selectFiltro.value;
+    const texto = inputBusqueda.value.toLowerCase();
     const cards = document.querySelectorAll('.card');
 
-    let marcaSeleccionada = "";
-    switch (criterioMarca) {
-      case '1': marcaSeleccionada = html.toLowerCase(); break;
-      case '2': marcaSeleccionada = css.toLowerCase(); break;
-      case '3': marcaSeleccionada = javascript.toLowerCase(); break;
-    }
+    let marca = "";
+    if (criterio === '1') marca = html.toLowerCase();
+    else if (criterio === '2') marca = css.toLowerCase();
+    else if (criterio === '3') marca = javascript.toLowerCase();
 
-    cards.forEach(tarjeta => {
-      const tecnologiasTarjeta = tarjeta.getAttribute('data-tecnologias') || "";
-      const textoTarjeta = tarjeta.textContent.toLowerCase();
-
-      const cumpleMarca = (criterioMarca === '0' || tecnologiasTarjeta.includes(marcaSeleccionada));
-      const cumpleTexto = textoTarjeta.includes(textoBusqueda);
-
-      tarjeta.style.display = (cumpleMarca && cumpleTexto) ? "block" : "none";
+    cards.forEach(card => {
+      const techs = card.getAttribute('data-tecnologias') || "";
+      const text = card.textContent.toLowerCase();
+      const cumpleMarca = criterio === '0' || techs.includes(marca);
+      const cumpleTexto = text.includes(texto);
+      card.style.display = (cumpleMarca && cumpleTexto) ? "block" : "none";
     });
   }
 
@@ -218,5 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
   inputBusqueda.addEventListener('input', filtrarTarjetas);
 
   filtrarTarjetas();
-
 });
+
+
